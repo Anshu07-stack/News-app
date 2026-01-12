@@ -1,29 +1,29 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Wrapper from '../components/Wrapper'
-import apiInstance from '../config/axios'
+import { UseNewsContext } from '../context/NewsContext'
 
-const News = ({ClassName}) => {
-  // const fetchNews = async ()=>{
-  //   const response =  await apiInstance.get(`/everything?q=tesla&apiKey=${import.meta.env.VITE_API_KEY}`)
-  //   console.log(response)
-  // }
-  // useEffect(()=>{
-  //   fetchNews()
-  // },[])
+const News = ({ ClassName }) => {
+const {news , setNews , fetchNews} = UseNewsContext();
+
+
+  useEffect(() => {
+    const data = fetchNews();
+    console.log(data)
+  }, [])
   return (
     <Wrapper>
-     <div className={`grid grid-cols-4 gap-6 ${ClassName}`}>
-       <NewsCard />
-       <NewsCard />
-       <NewsCard />
-       <NewsCard />
-       <NewsCard />
-       <NewsCard />
-       <NewsCard />
-       <NewsCard />
-       <NewsCard />
+      <div className={`grid grid-cols-4 gap-6 ${ClassName}`}>
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
 
-     </div>
+      </div>
     </Wrapper>
   )
 }
