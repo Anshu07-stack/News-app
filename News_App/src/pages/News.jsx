@@ -10,9 +10,11 @@ const {news , setNews , fetchNews} = UseNewsContext();
     const data = fetchNews();
     console.log(data)
   }, [])
+
   return (
     <Wrapper>
       <div className={`grid grid-cols-4 gap-6 ${ClassName}`}>
+        
         <NewsCard />
         <NewsCard />
         <NewsCard />

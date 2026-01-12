@@ -3,8 +3,10 @@ import apiInstance from "../config/axios";
 
 const NewsContext = createContext();
 
+
 const NewsContextProvider = ({ children }) => {
     const [news, setNews] = useState([]);
+
     const fetchNews = async (url="/everything?q=india") => {
        try {
             const response = await api.get(`${url}&apiKey=${import.meta.env.VITE_API_KEY}`)
@@ -15,6 +17,7 @@ const NewsContextProvider = ({ children }) => {
         
         }
     }
+    
     const value = {
         news,
         setNews,
