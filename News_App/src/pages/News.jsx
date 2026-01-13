@@ -3,18 +3,21 @@ import Wrapper from '../components/Wrapper'
 import { UseNewsContext } from '../context/NewsContext'
 
 const News = ({ ClassName }) => {
-const {news , setNews , fetchNews} = UseNewsContext();
-
+  const { news, setNews, fetchNews } = UseNewsContext();
+  console.log(news)
 
   useEffect(() => {
-    const data = fetchNews();
-    console.log(data)
+    ( async () => {
+      const data =  await fetchNews();
+      setNews(data.articles); 
+    })()
+
   }, [])
 
   return (
     <Wrapper>
       <div className={`grid grid-cols-4 gap-6 ${ClassName}`}>
-        
+
         <NewsCard />
         <NewsCard />
         <NewsCard />

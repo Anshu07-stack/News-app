@@ -9,8 +9,7 @@ const NewsContextProvider = ({ children }) => {
 
     const fetchNews = async (url="/everything?q=india") => {
        try {
-            const response = await api.get(`${url}&apiKey=${import.meta.env.VITE_API_KEY}`)
-            setLoading(false);
+            const response = await  apiInstance.get(`${url}&apiKey=${import.meta.env.VITE_API_KEY}`)
             return response.data;
         } catch (error) {
             console.log(error);
