@@ -2,7 +2,7 @@ import './App.css'
 import Category from './components/Category'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
-import News from './pages/news'
+import News from './pages/News'
 
 
 function App() {

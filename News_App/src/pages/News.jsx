@@ -4,12 +4,12 @@ import { UseNewsContext } from '../context/NewsContext'
 
 const News = ({ ClassName }) => {
   const { news, setNews, fetchNews } = UseNewsContext();
-  console.log(news)
+  // console.log(news)
 
   useEffect(() => {
-    ( async () => {
-      const data =  await fetchNews();
-      setNews(data.articles); 
+    (async () => {
+      const data = await fetchNews();
+      setNews(data.articles);
     })()
 
   }, [])
@@ -18,33 +18,37 @@ const News = ({ ClassName }) => {
     <Wrapper>
       <div className={`grid grid-cols-4 gap-6 ${ClassName}`}>
 
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
+        {news.map((newsDetails, index) => {
+          return (
+            <NewsCard key={index} details={newsDetails} />
+          )
+        })}
 
       </div>
     </Wrapper>
   )
 }
-const NewsCard = () => {
+const NewsCard = ({ details }) => {
+
   return (
     <div className="card bg-base-300 shadow-sm">
-      <figure>
+      <figure className="h-45 overflow-hidden">
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt="Shoes" />
+          src={details?.urlToImage}
+          alt="news"
+          className="h-full w-full object-cover"
+        />
       </figure>
+
       <div className="card-body">
-        <h2 className="card-title">Card Title</h2>
-        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+        <h2 className="card-title line-clamp-2">{details?.title}</h2>
+        <p className='line-clamp-3'>{details.description}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          <button
+            onClick={() => window.open(details?.url)}
+            className="btn btn-primary">
+            Read More...
+          </button>
         </div>
       </div>
     </div>
