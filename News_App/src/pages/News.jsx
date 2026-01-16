@@ -19,6 +19,7 @@ const News = ({ ClassName }) => {
       <div className={`grid grid-cols-4 gap-6 ${ClassName}`}>
 
         {news.map((newsDetails, index) => {
+           if(!newsDetails?.urlToImage) return null;
           return (
             <NewsCard key={index} details={newsDetails} />
           )
@@ -46,7 +47,7 @@ const NewsCard = ({ details }) => {
         <div className="card-actions justify-end">
           <button
             onClick={() => window.open(details?.url)}
-            className="btn btn-primary">
+            className="btn  badge-outline mt-2">
             Read More...
           </button>
         </div>

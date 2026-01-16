@@ -3,7 +3,7 @@ import apiInstance from "../config/axios";
 
 const NewsContext = createContext();
 
-
+   
 const NewsContextProvider = ({ children }) => {
     const [news, setNews] = useState([]);
 
