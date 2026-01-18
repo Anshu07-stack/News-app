@@ -18,7 +18,7 @@ const Category = ({ ClassName }) => {
     const selectCategory = e.target.value;
     const data = await fetchNews(`/everything?q=${selectCategory}`);
     setNews(data.articles);
-    console.log(news)
+    // console.log(news)
 
   };
 
