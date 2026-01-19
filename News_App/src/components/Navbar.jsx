@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
 import Wrapper from "./Wrapper";
 import { UseNewsContext } from "../context/NewsContext";
 
 const Navbar = ({ className }) => {
-  // const [searchValue, setSearchValue] = useState('')
+
   const { setNews, fetchNews } = UseNewsContext();
   let timer;
   const searchNews = (e) => {

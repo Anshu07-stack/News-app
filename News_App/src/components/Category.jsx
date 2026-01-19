@@ -3,7 +3,7 @@ import Wrapper from "./Wrapper";
 
 const Category = ({ ClassName }) => {
 
-  const {news , setNews,fetchNews} = UseNewsContext()
+  const { setNews,fetchNews} = UseNewsContext()
   const category = [
     "business",
     "entertainment",
@@ -18,7 +18,7 @@ const Category = ({ ClassName }) => {
     const selectCategory = e.target.value;
     const data = await fetchNews(`/everything?q=${selectCategory}`);
     setNews(data.articles);
-    // console.log(news)
+   
 
   };
 
